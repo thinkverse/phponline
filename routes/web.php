@@ -12,6 +12,20 @@ Route::prefix('dashboard')
     ->group(function () {
 
     Route::view('/', 'dashboard')->name('index');
+
+
+    /**
+     * Articles
+     */
+    Route::prefix('articles')->as('articles:')->group(function () {
+        Route::get('/', App\Http\Controllers\Pages\Dashboard\Articles\IndexController::class)->name('index');
+        Route::get('create', App\Http\Controllers\Pages\Dashboard\Articles\CreateController::class)->name('create');
+//        Route::post('/', 'ArticleController@store')->name('store');
+//        Route::get('/{article}', 'ArticleController@show')->name('show');
+//        Route::get('/{article}/edit', 'ArticleController@edit')->name('edit');
+//        Route::put('/{article}', 'ArticleController@update')->name('update');
+//        Route::delete('/{article}', 'ArticleController@destroy')->name('destroy');
+    });
 });
 
 
