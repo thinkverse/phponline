@@ -10,6 +10,6 @@ it('can load a users profile page', function () {
     $user = User::factory()->create();
 
     get(
-        uri: route('users:profile', $user->handle),
+        uri: route('pages:users:profile', $user->handle),
     )->assertStatus(Http::OK);
 });

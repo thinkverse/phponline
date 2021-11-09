@@ -6,9 +6,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::prefix('dashboard')
+    ->middleware(['auth:sanctum', 'verified'])
+    ->as('dashboard:')
+    ->group(function () {
+
+    Route::view('/', 'dashboard')->name('index');
+});
+
 
 Route::get(
     '@{user:handle}',
